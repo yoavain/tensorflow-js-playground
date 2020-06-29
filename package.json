@@ -1,0 +1,24 @@
+{
+  "name": "tf-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-image1": "ts-node src/tfjs-model.ts ./resources/image1.jpg",
+    "start-image2": "ts-node src/tfjs-model.ts ./resources/image2.jpg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@codait/max-vis": "0.2.7",
+    "@tensorflow-models/coco-ssd": "2.0.3",
+    "@tensorflow/tfjs-node": "2.0.1",
+    "@tensorflow/tfjs-node-gpu": "2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "14.0.14",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.5"
+  }
+}
