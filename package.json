@@ -1,11 +1,10 @@
 {
-  "name": "tf-playground",
+  "name": "tensorflow-js-playground",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-image1": "ts-node src/tfjs-model.ts ./resources/image1.jpg",
-    "start-image2": "ts-node src/tfjs-model.ts ./resources/image2.jpg"
+    "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg"
   },
   "keywords": [],
   "author": "",

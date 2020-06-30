@@ -3,7 +3,7 @@ import { GraphModel, Rank, Tensor } from '@tensorflow/tfjs-node-gpu';
 import { promises as fs } from 'fs';
 import * as  maxvis from '@codait/max-vis';
 import * as path from "path";
-import { labels } from "./labels";
+import { labels } from "./tfjs-image-annotation-demo-labels";
 
 const modelUrl = 'https://tfhub.dev/tensorflow/tfjs-model/ssdlite_mobilenet_v2/1/default/1';
 const maxNumBoxes = 8;
@@ -21,7 +21,7 @@ const processInput = async (imagePath: string): Promise<Tensor<Rank>> => {
 }
 
 // run prediction with the provided input Tensor
-const runModel = (model, inputTensor) => {
+const runModel = (model: GraphModel, inputTensor: Tensor<Rank>): Promise<Tensor | Tensor[]> => {
     console.log('running model');
     return model.executeAsync(inputTensor);
 }
@@ -126,16 +126,16 @@ if (process.argv.length < 3) {
 }
 else {
     let imagePath = process.argv[2];
-    let width = 1;
-    let height = 1;
+    let width: number = 1;
+    let height: number = 1;
     loadModel()
-        .then(async (model) => {
-            const inputTensor = await processInput(imagePath);
+        .then(async (model: GraphModel) => {
+            const inputTensor: Tensor<Rank> = await processInput(imagePath);
             height = inputTensor.shape[1];
             width = inputTensor.shape[2];
             return runModel(model, inputTensor);
         })
-        .then(prediction => {
+        .then((prediction: Tensor<Rank> | Tensor[]) => {
             const jsonOutput = processOutput(prediction, width, height);
             console.log(jsonOutput);
             annotateImage(jsonOutput, imagePath);

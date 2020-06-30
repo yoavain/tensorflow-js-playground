@@ -14,3 +14,13 @@ conda create --name tf_gpu tensorflow-gpu
 ```
 activate tf_gpu
 ```
+
+#### NodeJS Setup
+```
+npm install
+```
+
+#### Run Demo
+```
+npm run image-annotate-demo
+```
