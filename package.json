@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "simple-train": "ts-node src/tfjs-gpu-check.ts",
     "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg"
   },
   "keywords": [],
