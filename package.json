@@ -5,20 +5,24 @@
   "main": "index.js",
   "scripts": {
     "simple-train": "ts-node src/tfjs-gpu-check.ts",
-    "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg"
+    "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg",
+    "facemesh-demo": "ts-node src/tfjs-facemesh-demo.ts ./resources/face1.jpg"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@codait/max-vis": "0.2.7",
-    "@tensorflow-models/coco-ssd": "2.0.3",
+    "@tensorflow-models/coco-ssd": "2.0.4",
+    "@tensorflow-models/facemesh": "0.0.3",
+    "@tensorflow/tfjs-converter": "2.0.1",
+    "@tensorflow/tfjs-core": "2.0.1",
     "@tensorflow/tfjs-node": "2.0.1",
     "@tensorflow/tfjs-node-gpu": "2.0.1"
   },
   "devDependencies": {
     "@types/node": "14.0.14",
     "ts-node": "8.10.2",
-    "typescript": "3.9.5"
+    "typescript": "3.9.6"
   }
 }

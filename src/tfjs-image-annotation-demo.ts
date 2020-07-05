@@ -108,9 +108,9 @@ const createJSONresponse = (boxes, scores, indexes, classes, width: number, heig
 
 const annotateImage = async (prediction, imagePath) => {
     console.log(`annotating prediction result(s)`);
-    const annotatedImageBuffer = await maxvis.annotate(prediction, imagePath);
-    const f = path.join(__dirname, "../output", `${path.parse(imagePath).name}-annotate.png`);
     try {
+        const annotatedImageBuffer = await maxvis.annotate(prediction, imagePath);
+        const f = path.join(__dirname, "../output", `${path.parse(imagePath).name}-annotate.png`);
         await fs.writeFile(f, annotatedImageBuffer);
         console.log(`annotated image saved as ${f}\r\n`);
     }
@@ -122,7 +122,7 @@ const annotateImage = async (prediction, imagePath) => {
 // run
 if (process.argv.length < 3) {
     console.log('please pass an image to process. ex:');
-    console.log('   ts-node tfjs-model.ts /path/to/image.jpg');
+    console.log('   ts-node tfjs-image-anotation.ts /path/to/image.jpg');
 }
 else {
     let imagePath = process.argv[2];
