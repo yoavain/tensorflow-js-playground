@@ -1,40 +1,50 @@
 import type { FaceMesh } from "@tensorflow-models/facemesh";
 import * as facemesh from "@tensorflow-models/facemesh";
 import * as tf from "@tensorflow/tfjs-node-gpu";
-import { Tensor3D } from "@tensorflow/tfjs-node-gpu";
-import { promises as fs } from "fs";
-import path from "path";
-import { encodePng } from "@tensorflow/tfjs-node-gpu/dist/image";
+import { Rank, Tensor3D, TensorBuffer } from "@tensorflow/tfjs-node-gpu";
+import { decodeImage, encodeImage } from "./tfjs-image-utils";
 
-// convert image to Tensor
-const processInput = async (imagePath: string): Promise<Tensor3D> => {
-    console.log(`preprocessing image ${imagePath}`);
-    const image: Buffer = await fs.readFile(imagePath);
-    return tf.node.decodeImage(new Uint8Array(image), 3) as Tensor3D;
+const setAllLayers = (tensorBuffer: TensorBuffer<Rank, "int32">, x: number, y: number, value: number) => {
+    tensorBuffer.set(x, y, 0, value);
+    tensorBuffer.set(x, y, 1, value);
+    tensorBuffer.set(x, y, 2, value);
 }
 
-const annotateImage = async (output: Tensor3D, imagePath) => {
-    console.log(`annotating prediction result(s)`);
-    try {
-        const uint8Array = await encodePng(output);
-        const f = path.join(__dirname, "../output", `${path.parse(imagePath).name}-facemesh.png`);
-        await fs.writeFile(f, uint8Array);
-        console.log(`annotated image saved as ${f}\r\n`);
+const setWide = (tensorBuffer: TensorBuffer<Rank, "int32">, x: number, y: number, shape: [number, number, number]) => {
+    const roundX = Math.round(x);
+    const roundY = Math.round(y);
+    const [maxX, maxY] = shape;
+    setAllLayers(tensorBuffer, roundX, roundY, 0);
+    if (roundX - 1 >= 0) {
+        setAllLayers(tensorBuffer, roundX - 1, roundY, 0);
+        if (roundY - 1 >= 0) {
+            setAllLayers(tensorBuffer, roundX - 1, roundY -1, 0);
+        }
+        if (roundY + 1 < maxY) {
+            setAllLayers(tensorBuffer, roundX + 1, roundY + 1, 0);
+        }
     }
-    catch (err) {
-        console.error(err);
+    if (roundX + 1 < maxX) {
+        setAllLayers(tensorBuffer, roundX + 1, roundY, 0);
+        if (roundY - 1 >= 0) {
+            setAllLayers(tensorBuffer, roundX - 1, roundY -1, 0);
+        }
+        if (roundY + 1 < maxY) {
+            setAllLayers(tensorBuffer, roundX + 1, roundY + 1, 0);
+        }
     }
-}
+};
 
 const main = async (imagePath: string) => {
     // Load the MediaPipe facemesh model.
     const model: FaceMesh = await facemesh.load();
 
-    const input: Tensor3D = await processInput(imagePath);
+    const input: Tensor3D = await decodeImage(imagePath);
     const inputData: Int32Array = await input.data() as Int32Array;
 
     const predictions = await model.estimateFaces(input);
-    let tensorBuffer = tf.buffer(input.shape, "int32", inputData);
+    let inputShape: [number, number, number] = input.shape;
+    let tensorBuffer: TensorBuffer<Rank, "int32"> = tf.buffer(inputShape, "int32", inputData);
 
     if (predictions.length > 0) {
         for (let i = 0; i < predictions.length; i++) {
@@ -43,14 +53,8 @@ const main = async (imagePath: string) => {
             // Log facial keypoints.
             for (let i = 0; i < keypoints.length; i++) {
                 const [x, y, z] = keypoints[i];
-                try {
-                    tensorBuffer.set(Math.round(x), Math.round(y), 0, 0);
-                    tensorBuffer.set(Math.round(x), Math.round(y), 1, 0);
-                    tensorBuffer.set(Math.round(x), Math.round(y), 2, 0);
-                } catch (e) {
-                    console.log(e);
-                }
 
+                setWide(tensorBuffer, x, y, inputShape);
                 console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
             }
         }
@@ -58,7 +62,7 @@ const main = async (imagePath: string) => {
 
     let tensor: Tensor3D = tensorBuffer.toTensor() as Tensor3D;
 
-    await annotateImage(tensor, imagePath);
+    await encodeImage(tensor, imagePath, "facemesh");
 };
 
 // run
