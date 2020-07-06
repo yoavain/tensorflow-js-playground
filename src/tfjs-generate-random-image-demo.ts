@@ -9,13 +9,12 @@ const main = async (dimension: number) => {
     for (let x = 0; x < dimension; x++) {
         for (let y = 0; y < dimension; y++) {
             for (let c = 0; c < 3; c++) {
-                tensorBuffer.set(x, y, c, Math.floor((x/dimension + y/dimension) * 128));
+                tensorBuffer.set(x, y, c, Math.floor(Math.random() * 256 * 256 * 256));
             }
         }
     }
 
     let r3Tensor: Tensor3D = tf.tensor3d(new Uint8Array(tensorBuffer.values), inputShape);
-
     await encodeImage(r3Tensor, "./resources/image.png", "random");
 };
 
