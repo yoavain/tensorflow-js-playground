@@ -8,7 +8,9 @@
     "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg",
     "facemesh-demo": "ts-node src/tfjs-facemesh-demo.ts ./resources/face1.jpg",
     "generate-random-image-demo": "ts-node src/tfjs-generate-random-image-demo.ts 512",
-    "image-decode-encode-test": "ts-node src/tfjs-image-decode-encode.ts"
+    "generate-gradient-image-demo": "ts-node src/tfjs-generate-gradient-image-demo.ts 8",
+    "image-decode-encode-test": "ts-node src/tfjs-image-decode-encode.ts",
+    "test": "ts-node src/tfjs-image-utils.ts"
   },
   "keywords": [],
   "author": "",
