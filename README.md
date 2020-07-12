@@ -1,4 +1,7 @@
+![visitors](https://visitor-badge.glitch.me/badge?page_id=yoavain.tf-playground)
+
 #### CUDA Environment Setup
+
 ```
 Install CUDA 10.0
 Download cUdNN v7.x for CUDA 10.0 for Windows 10
