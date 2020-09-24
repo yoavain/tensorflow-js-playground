@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "type-check": "tsc --build tsconfig.test.json",
     "check-gpu": "ts-node src/tfjs-gpu-check.ts",
     "image-annotate-demo": "ts-node src/tfjs-image-annotation-demo.ts ./resources/image1.jpg",
     "facemesh-demo": "ts-node src/tfjs-facemesh-demo.ts ./resources/face1.jpg",
@@ -16,17 +18,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@codait/max-vis": "0.2.7",
+    "@codait/max-vis": "0.3.0",
     "@tensorflow-models/coco-ssd": "2.1.0",
-    "@tensorflow-models/facemesh": "0.0.3",
-    "@tensorflow/tfjs-converter": "2.0.1",
-    "@tensorflow/tfjs-core": "2.0.1",
-    "@tensorflow/tfjs-node": "2.0.1",
-    "@tensorflow/tfjs-node-gpu": "2.0.1"
+    "@tensorflow-models/facemesh": "0.0.4",
+    "@tensorflow/tfjs-converter": "2.4.0",
+    "@tensorflow/tfjs-core": "2.4.0",
+    "@tensorflow/tfjs-node": "2.4.0",
+    "@tensorflow/tfjs-node-gpu": "2.4.0"
   },
   "devDependencies": {
-    "@types/node": "14.0.14",
-    "ts-node": "8.10.2",
-    "typescript": "3.9.6"
+    "@types/node": "14.11.2",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.3"
   }
 }

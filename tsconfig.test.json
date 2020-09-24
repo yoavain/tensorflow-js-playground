@@ -7,12 +7,12 @@
     "declaration": true,
     "moduleResolution": "node",
     "target": "es2017",
-    "outDir": "./dist",
+    "baseUrl": ".",
     "rootDir": "./src",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noEmit": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./test/**/*"
   ]
 }
