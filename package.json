@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@codait/max-vis": "0.3.0",
-    "@tensorflow-models/coco-ssd": "2.1.0",
+    "@tensorflow-models/coco-ssd": "2.2.1",
     "@tensorflow-models/facemesh": "0.0.4",
     "@tensorflow/tfjs-converter": "2.7.0",
     "@tensorflow/tfjs-core": "2.7.0",
