@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs-node-gpu';
-import { GraphModel, Rank, Tensor } from '@tensorflow/tfjs-node-gpu';
+import type { GraphModel, Rank, Tensor } from '@tensorflow/tfjs-node-gpu';
 import { promises as fs } from 'fs';
 import * as  maxvis from '@codait/max-vis';
 import * as path from "path";

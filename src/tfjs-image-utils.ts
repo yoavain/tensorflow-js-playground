@@ -1,4 +1,4 @@
-import { Tensor3D } from "@tensorflow/tfjs-node-gpu";
+import type { Tensor3D } from "@tensorflow/tfjs-node-gpu";
 import { promises as fs } from "fs";
 import * as tf from "@tensorflow/tfjs-node-gpu";
 import { encodePng } from "@tensorflow/tfjs-node-gpu/dist/image";

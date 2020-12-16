@@ -10,7 +10,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "importsNotUsedAsValues": "error"
   },
   "include": [
     "./src/**/*"

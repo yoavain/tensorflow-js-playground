@@ -1,5 +1,5 @@
 import { decodeImage, encodeImage } from "./tfjs-image-utils";
-import { Tensor3D } from "@tensorflow/tfjs-core";
+import type { Tensor3D } from "@tensorflow/tfjs-core";
 
 const inputPath = "resources/face1.jpg";
 decodeImage(inputPath)
