@@ -9,7 +9,8 @@
     "target": "es2017",
     "baseUrl": ".",
     "rootDir": "./src",
-    "noEmit": true
+    "noEmit": true,
+    "importsNotUsedAsValues": "error"
   },
   "include": [
     "./src/**/*",
