@@ -22,7 +22,7 @@
     "@tensorflow-models/coco-ssd": "2.2.1",
     "@tensorflow-models/facemesh": "0.0.4",
     "@tensorflow/tfjs-converter": "2.8.2",
-    "@tensorflow/tfjs-core": "2.8.1",
+    "@tensorflow/tfjs-core": "2.8.2",
     "@tensorflow/tfjs-node": "2.8.2",
     "@tensorflow/tfjs-node-gpu": "2.8.1"
   },
