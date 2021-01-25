@@ -21,10 +21,10 @@
     "@codait/max-vis": "0.3.0",
     "@tensorflow-models/coco-ssd": "2.2.1",
     "@tensorflow-models/facemesh": "0.0.4",
-    "@tensorflow/tfjs-converter": "2.8.5",
-    "@tensorflow/tfjs-core": "2.8.5",
-    "@tensorflow/tfjs-node": "2.8.5",
-    "@tensorflow/tfjs-node-gpu": "2.8.5"
+    "@tensorflow/tfjs-converter": "3.0.0",
+    "@tensorflow/tfjs-core": "3.0.0",
+    "@tensorflow/tfjs-node": "3.0.0",
+    "@tensorflow/tfjs-node-gpu": "3.0.0"
   },
   "devDependencies": {
     "@types/node": "14.14.22",
