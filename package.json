@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@codait/max-vis": "0.3.0",
-    "@tensorflow-models/coco-ssd": "2.2.1",
+    "@tensorflow-models/coco-ssd": "2.2.2",
     "@tensorflow-models/facemesh": "0.0.4",
     "@tensorflow/tfjs-converter": "3.4.0",
     "@tensorflow/tfjs-core": "3.4.0",
