@@ -25,7 +25,7 @@
     "@codait/max-vis": "0.3.0",
     "@tensorflow-models/coco-ssd": "2.2.2",
     "@tensorflow-models/facemesh": "0.0.4",
-    "@tensorflow/tfjs-converter": "3.8.0",
+    "@tensorflow/tfjs-converter": "3.9.0",
     "@tensorflow/tfjs-core": "3.8.0",
     "@tensorflow/tfjs-node": "3.8.0",
     "@tensorflow/tfjs-node-gpu": "3.8.0"
