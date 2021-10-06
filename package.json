@@ -31,7 +31,7 @@
     "@tensorflow/tfjs-node-gpu": "3.9.0"
   },
   "devDependencies": {
-    "@types/node": "16.10.2",
+    "@types/node": "16.10.3",
     "ts-node": "10.2.1",
     "typescript": "4.4.3"
   }
