@@ -19,7 +19,7 @@
   "license": "ISC",
   "engines": {
     "node": ">=12 <17",
-    "npm": "<7"
+    "npm": "<9"
   },
   "dependencies": {
     "@codait/max-vis": "0.3.0",
