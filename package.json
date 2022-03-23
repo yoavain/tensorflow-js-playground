@@ -28,7 +28,7 @@
     "@tensorflow/tfjs-converter": "3.14.0",
     "@tensorflow/tfjs-core": "3.14.0",
     "@tensorflow/tfjs-node": "3.14.0",
-    "@tensorflow/tfjs-node-gpu": "3.14.0"
+    "@tensorflow/tfjs-node-gpu": "3.15.0"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
