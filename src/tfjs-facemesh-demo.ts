@@ -1,5 +1,5 @@
-import type { FaceMesh } from "@tensorflow-models/facemesh";
-import * as facemesh from "@tensorflow-models/facemesh";
+import type { FaceLandmarksDetector } from "@tensorflow-models/face-landmarks-detection";
+import * as faceLandmarksDetection from "@tensorflow-models/face-landmarks-detection";
 import { tensor3d, Tensor3D } from "@tensorflow/tfjs-node-gpu";
 import { decodeImage, encodeImage } from "./tfjs-image-utils";
 
@@ -35,12 +35,12 @@ const setWide = (uint8Array: Uint8Array, floatX: number, floatY: number, shape: 
 
 const main = async (imagePath: string) => {
     // Load the MediaPipe facemesh model.
-    const model: FaceMesh = await facemesh.load();
+    const model: FaceLandmarksDetector = await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh);
 
     const input: Tensor3D = await decodeImage(imagePath);
     let outputData: Uint8Array = new Uint8Array(input.dataSync());
 
-    const predictions = await model.estimateFaces(input);
+    const predictions = await model.estimateFaces({ input });
     let inputShape: Shape = input.shape;
 
     if (predictions.length > 0) {
