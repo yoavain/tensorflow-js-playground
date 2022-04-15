@@ -1,5 +1,5 @@
-import type { FaceLandmarksDetector } from "@tensorflow-models/face-landmarks-detection";
 import * as faceLandmarksDetection from "@tensorflow-models/face-landmarks-detection";
+import type { Face, FaceLandmarksDetector, MediaPipeFaceMeshTfjsModelConfig } from "@tensorflow-models/face-landmarks-detection";
 import { tensor3d, Tensor3D } from "@tensorflow/tfjs-node-gpu";
 import { decodeImage, encodeImage } from "./tfjs-image-utils";
 
@@ -35,21 +35,26 @@ const setWide = (uint8Array: Uint8Array, floatX: number, floatY: number, shape: 
 
 const main = async (imagePath: string) => {
     // Load the MediaPipe facemesh model.
-    const model: FaceLandmarksDetector = await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh);
+    const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
+    const detectorConfig: MediaPipeFaceMeshTfjsModelConfig = {
+        runtime: "tfjs",
+        refineLandmarks: false
+    }
+    const detector: FaceLandmarksDetector = await faceLandmarksDetection.createDetector(model, detectorConfig);
 
     const input: Tensor3D = await decodeImage(imagePath);
     let outputData: Uint8Array = new Uint8Array(input.dataSync());
 
-    const predictions = await model.estimateFaces({ input });
+    const predictions: Face[] = await detector.estimateFaces(input);
     let inputShape: Shape = input.shape;
 
     if (predictions.length > 0) {
         for (let i = 0; i < predictions.length; i++) {
-            const keypoints: [number, number, number][] = predictions[i].scaledMesh as [number, number, number][];
+            const keypoints = predictions[i].keypoints;
 
             // Log facial keypoints.
             for (let i = 0; i < keypoints.length; i++) {
-                const [x, y, z] = keypoints[i];
+                const { x, y, z } = keypoints[i];
 
                 setWide(outputData, x, y, inputShape);
                 console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
