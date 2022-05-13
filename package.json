@@ -26,7 +26,7 @@
     "@tensorflow-models/coco-ssd": "2.2.2",
     "@tensorflow-models/face-landmarks-detection": "1.0.1",
     "@tensorflow/tfjs-converter": "3.16.0",
-    "@tensorflow/tfjs-core": "3.16.0",
+    "@tensorflow/tfjs-core": "3.17.0",
     "@tensorflow/tfjs-node": "3.16.0",
     "@tensorflow/tfjs-node-gpu": "3.16.0"
   },
