@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+	"postinstall": "npx fix-lockfile-integrity package-lock.json",
     "build": "tsc --build tsconfig.json",
     "type-check": "tsc --build tsconfig.test.json",
     "check-gpu": "ts-node src/tfjs-gpu-check.ts",
@@ -31,7 +32,7 @@
     "@tensorflow/tfjs-node-gpu": "3.20.0"
   },
   "devDependencies": {
-    "@types/node": "18.7.12",
+    "@types/node": "18.7.16",
     "ts-node": "10.9.1",
     "typescript": "4.8.3"
   }
