@@ -1,4 +1,5 @@
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=yoavain.tf-playground)
+[![CodeQL](https://github.com/yoavain/tensorflow-js-playground/workflows/CodeQL/badge.svg)](https://github.com/yoavain/tensorflow-js-playground/actions?query=workflow%3ACodeQL)
 
 #### CUDA Environment Setup
 
