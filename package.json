@@ -28,7 +28,7 @@
     "@tensorflow-models/face-landmarks-detection": "1.0.2",
     "@tensorflow/tfjs-converter": "3.21.0",
     "@tensorflow/tfjs-core": "3.21.0",
-    "@tensorflow/tfjs-node": "3.21.0",
+    "@tensorflow/tfjs-node": "3.21.1",
     "@tensorflow/tfjs-node-gpu": "3.21.0"
   },
   "devDependencies": {
