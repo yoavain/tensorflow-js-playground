@@ -25,7 +25,7 @@
   "dependencies": {
     "@codait/max-vis": "0.3.0",
     "@tensorflow-models/coco-ssd": "2.2.2",
-    "@tensorflow-models/face-landmarks-detection": "1.0.2",
+    "@tensorflow-models/face-landmarks-detection": "1.0.5",
     "@tensorflow/tfjs-converter": "3.21.0",
     "@tensorflow/tfjs-core": "3.21.0",
     "@tensorflow/tfjs-node": "3.21.1",
